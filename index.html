@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>preguntados</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <h1>Preguntados</h1><img src="images/logo.png" alt="logo-preguntados">
+    </header>
+
+    <div class="container mt-4 navContainer">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <button class="nav-link" id="crearPregunta" aria-current="generar pregunta" href="#">Crear pregunta</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="listPreguntas" aria-current="ver preguntas" href="#">Ver preguntas</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" aria-current="realizar el quiz" href="#">Realiza tu propio quiz</button>
+            </li>
+        </ul>
+    </div>
+    <div class="containerImages">
+        <div class="scene">
+            <div class="carousel">
+                <div class="carousel__cell"><img src="images/Preguntados.webp" alt="preguntados-logo" srcset=""></div>
+                <div class="carousel__cell"><img src="images/Arte.webp" alt="arte" srcset=""></div>
+                <div class="carousel__cell"><img src="images/Entretenimiento.webp" alt="entretenimiento" srcset="">
+                </div>
+                <div class="carousel__cell"><img src="images/Ciencia.webp" alt="ciencia" srcset=""></div>
+                <div class="carousel__cell"><img src="images/Deportes.webp" alt="deportes" srcset=""></div>
+                <div class="carousel__cell"><img src="images/Geografia.webp" alt="geografia" srcset=""></div>
+            </div>
+        </div>
+        <div class="controlCarousel" style="text-align: center;">
+            <button class="previous-button"><</button>
+            <button class="next-button">></button>
+        </div>
+    </div>
+    <div class="container mt-4 divDisable" id="divGenerarPreguntas">
+        <h3>Genera tus preguntas</h3>
+        <form id="form">
+            <div class="form-group">
+                <label for="pregunta">Pregunta:</label>
+                <input type="text" class="form-control" id="pregunta" name="pregunta" placeholder="Escribe tu pregunta"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="opcionA">Opción A:</label>
+                <input type="text" class="form-control" id="opcionA" name="opcionA" placeholder="Escribe la opción A"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="opcionB">Opción B:</label>
+                <input type="text" class="form-control" id="opcionB" name="opcionB" placeholder="Escribe la opción B"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="opcionC">Opción C:</label>
+                <input type="text" class="form-control" id="opcionC" name="opcionC" placeholder="Escribe la opción C"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="opcionD">Opción D:</label>
+                <input type="text" class="form-control" id="opcionD" name="opcionD" placeholder="Escribe la opción D"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="respuesta">Respuesta correcta:</label>
+                <select class="form-control" id="respuesta" name="respuesta" required>
+                    <option value="">Selecciona la respuesta correcta</option>
+                    <option value="opcionA">Opción A</option>
+                    <option value="opcionB">Opción B</option>
+                    <option value="opcionC">Opción C</option>
+                    <option value="opcionD">Opción D</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+    <div class="container-questions mt-4 divDisable" id="divListPreguntas">
+        <div class="cuestionario">
+            <h2>Lista de preguntas</h2>
+        </div>
+        <ol id="listQuestions"></ol>
+    </div>
+
+    <!--Modal para editar las preguntas-->
+    <div class="modal fade" id="modalEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modalEditLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditLabel">Editar pregunta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!--form-->
+                    <form id="formEdit">
+                        <div class="formEdit-group">
+                            <label for="preguntaEdit">Pregunta:</label>
+                            <input type="text" class="formEdit-control" id="preguntaEdit" name="preguntaEdit"
+                                placeholder="Escribe tu pregunta" required>
+                        </div>
+
+                        <div class="formEdit-group">
+                            <label for="opcionAEdit">Opción A:</label>
+                            <input type="text" class="formEdit-control" id="opcionAEdit" name="opcionAEdit"
+                                placeholder="Escribe la opción A" required>
+                        </div>
+
+                        <div class="formEdit-group">
+                            <label for="opcionBEdit">Opción B:</label>
+                            <input type="text" class="formEdit-control" id="opcionBEdit" name="opcionBEdit"
+                                placeholder="Escribe la opción B" required>
+                        </div>
+
+                        <div class="formEdit-group">
+                            <label for="opcionCEdit">Opción C:</label>
+                            <input type="text" class="formEdit-control" id="opcionCEdit" name="opcionCEdit"
+                                placeholder="Escribe la opción C" required>
+                        </div>
+
+                        <div class="formEdit-group">
+                            <label for="opcionDEdit">Opción D:</label>
+                            <input type="text" class="formEdit-control" id="opcionDEdit" name="opcionDEdit"
+                                placeholder="Escribe la opción D" required>
+                        </div>
+
+                        <div class="formEdit-group">
+                            <label for="respuestaEdit">Respuesta correcta:</label>
+                            <select class="formEdit-control" id="respuestaEdit" name="respuestaEdit" required>
+                                <option value="">Selecciona la respuesta correcta</option>
+                                <option value="opcionA">Opción A</option>
+                                <option value="opcionB">Opción B</option>
+                                <option value="opcionC">Opción C</option>
+                                <option value="opcionD">Opción D</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btnGuardarCambios">Guardar cambios</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
